@@ -1,1 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>Dosa Tawa House — Real-Sizzle Dosa Cooking Game</title>
+<meta name="description" content="Pour batter, spread on a hot tawa, hear the real tsss sizzle, flip and serve a crisp dosa. A cozy web cooking game." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="kitchen-bg" aria-hidden="true">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="grain"></div>
+</div>
 
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-brand" href="#top">🫓 <span>Dosa Tawa House</span></a>
+    <div class="site-links">
+      <a href="#game-section">Play</a>
+      <a href="#how">How to make</a>
+      <a href="#sounds">Real sounds</a>
+    </div>
+    <a class="site-cta" href="#game-section">🔥 Heat the tawa</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">● live tawa &nbsp;•&nbsp; real sizzle &nbsp;•&nbsp; no downloads</p>
+      <h1>Hot tawa.<br />Crisp dosa.<br /><span>Sounds real.</span></h1>
+      <p class="hero-sub">Pour the batter, spread it thin, hear that <b>tsss…</b> when it kisses the hot tawa. Flip at golden, serve before it burns.</p>
+      <div class="hero-btns">
+        <a class="btn primary big" href="#game-section">🫓 Start making dosa</a>
+        <a class="btn dark" href="#sounds">🔊 Hear the sounds</a>
+      </div>
+      <div class="sound-chips">
+        <span>🍶 batter pour</span><span>🔥 tawa hiss</span><span>🥄 spatula scrape</span><span>✨ crisp crackle</span>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="chat-quote">
+        <p>man i wanna create a website , this game should work in tht and dosa and it shld sound like we are making it in real life&gt;</p>
+      </div>
+      <p class="chat-caption">▲ done — this website. dosa game below, with real-life tawa sounds.</p>
+      <div class="hero-tawa">🫓</div>
+    </div>
+  </div>
+</header>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">🫓</div>
+    <div class="brand-text">
+      <h1>Dosa Tawa</h1>
+      <p>real-sizzle kitchen</p>
+    </div>
+  </div>
+
+  <div class="stage-pill" id="stagePill" role="status" aria-live="polite">
+    <span class="dot" id="stageDot"></span>
+    <span id="stageLabel">Batter Ready</span>
+  </div>
+
+  <div class="hud">
+    <div class="hud-card timer-card" title="Cooking timer">
+      <span class="hud-icon">⏱</span>
+      <div class="hud-meta">
+        <span class="hud-label">Tawa time</span>
+        <strong id="timerText">0.0s</strong>
+      </div>
+      <div class="mini-bar"><div id="timerBar"></div></div>
+    </div>
+    <div class="hud-card score-card" title="Score">
+      <span class="hud-icon">⭐</span>
+      <div class="hud-meta">
+        <span class="hud-label">Score</span>
+        <strong id="scoreText">0</strong>
+      </div>
+    </div>
+    <div class="hud-btns">
+      <button id="btnPause" class="icon-btn" title="Pause (P)" aria-label="Pause">⏸</button>
+      <button id="btnMute" class="icon-btn" title="Mute (M)" aria-label="Mute">🔊</button>
+      <button id="btnReset" class="icon-btn" title="Reset (R)" aria-label="Reset">↺</button>
+    </div>
+  </div>
+</header>
+
+<main class="layout" id="game-section">
+  <section class="stage-wrap">
+    <div class="canvas-frame">
+      <canvas id="game" aria-label="Dosa cooking game canvas. Spread batter, pour on tawa, roast and flip."></canvas>
+      <div id="toast" class="toast" aria-live="polite"></div>
+      <div id="banner" class="banner hidden">
+        <span id="bannerText">PERFECT TIME!</span>
+      </div>
+      <div id="pauseOverlay" class="overlay hidden">
+        <div class="overlay-card">
+          <h2>Paused</h2>
+          <p>Your tawa is keeping hot…</p>
+          <button id="btnResume" class="btn primary">Resume cooking</button>
+        </div>
+      </div>
+      <div id="welcomeOverlay" class="overlay">
+        <div class="overlay-card wide">
+          <h2>🫓 Welcome to Dosa Tawa House!</h2>
+          <p>Your game plan, in order:</p>
+          <ol class="welcome-steps">
+            <li><b>1. Roast a dosa</b> — spread batter, pour on the tawa, flip at golden, serve</li>
+            <li><b>2. Brew a chai</b> — bottom tray: cup → water → boil → tea → milk → sugar → stir → serve</li>
+            <li><b>3. Have fun</b> — soda, energy can, car door, light switch (all clickable!)</li>
+          </ol>
+          <button id="btnStart" class="btn primary big">🔥 Start cooking</button>
+        </div>
+      </div>
+    </div>
+    <div class="hint-bar">
+      <span id="hintKeys">🖱 Drag edge to spread batter • Drag center to move • Pinch to spread • <b>F</b> flip • <b>Space</b> action</span>
+    </div>
+  </section>
+
+  <aside class="panel" aria-label="Cooking controls">
+    <div class="card instruction-card">
+      <div class="card-eyebrow"><span id="stepNum">Step 1 / 4</span><span class="pulse-dot"></span></div>
+      <h2 id="instructionTitle">Spread your batter!</h2>
+      <p id="instructionDesc">Press and drag across the batter to spread it thin like a real dosa. Use two fingers to pinch &amp; spread on touch screens.</p>
+    </div>
+
+    <div class="card">
+      <div class="meter-head">
+        <label>Batter spread</label>
+        <strong id="spreadVal">0%</strong>
+      </div>
+      <div class="bar spread-bar"><div id="spreadFill"></div></div>
+      <div class="meter-sub">Reach <b>45%</b> to heat the tawa. Thinner = crispier.</div>
+    </div>
+
+    <div class="card doneness-card">
+      <div class="meter-head">
+        <label>Roast</label>
+        <strong id="donenessLabel">BATTER</strong>
+      </div>
+      <div class="doneness-track" id="donenessTrack">
+        <div class="zone zone-raw"></div>
+        <div class="zone zone-perfect"></div>
+        <div class="zone zone-danger"></div>
+        <div id="donenessFill"></div>
+        <div id="donenessNeedle">▼</div>
+      </div>
+      <div class="doneness-legend">
+        <span>batter</span><span class="gold">golden</span><span class="perfect-t">crisp</span><span class="danger">burnt</span>
+      </div>
+    </div>
+
+    <div class="card actions-card">
+      <button id="btnPlace" class="btn primary" disabled>🍶 Pour on tawa</button>
+      <div class="btn-row">
+        <button id="btnFlip" class="btn warm" disabled>🥄 Flip <kbd>F</kbd></button>
+        <button id="btnRemove" class="btn dark" disabled>🫓 Serve</button>
+      </div>
+      <button id="btnAgain" class="btn ghost hidden">↺ Make another dosa</button>
+      <p class="actions-note" id="actionsNote">Spread the batter to continue…</p>
+    </div>
+
+    <div class="card score-card-panel">
+      <div class="stars" id="liveStars" aria-label="Live rating">★★★★★</div>
+      <div class="live-score-row"><span>Spread</span><strong id="statShape">—</strong><span>Flip</span><strong id="statFlip">—</strong></div>
+    </div>
+
+    <div class="card tea-card">
+      <div class="meter-head">
+        <label>🫖 Tea station</label>
+        <strong id="teaPts">+0</strong>
+      </div>
+      <ol class="tea-steps" id="teaSteps">
+        <li>Take cup</li>
+        <li>Add water</li>
+        <li>Boil water</li>
+        <li>Add tea</li>
+        <li>Add milk</li>
+        <li>Add sugar ×2</li>
+        <li>Stir 100%</li>
+        <li>Serve ◎</li>
+      </ol>
+      <div class="bar stir-bar"><div id="stirFill"></div></div>
+      <div class="meter-sub">Stirring: <b id="stirVal">0%</b> — circle inside the cup</div>
+    </div>
+
+    <div class="card objects-card">
+      <div class="meter-head"><label>🔧 Kitchen fun</label></div>
+      <div class="obj-grid">
+        <div>🥤 Soda <strong id="sodaState">closed</strong></div>
+        <div>🥫 Can <strong id="canState">closed</strong></div>
+        <div>🚗 Door <strong id="doorState">shut</strong></div>
+        <div>💡 Light <strong id="lightState">ON 💡</strong></div>
+      </div>
+      <div class="meter-sub">Tap the bottle, can, car &amp; switch right on the tawa scene!</div>
+    </div>
+
+    <div class="card tasks-card">
+      <div class="meter-head"><label>🎯 Your tasks</label><strong id="taskCount">0/5</strong></div>
+      <ul class="tasks-list" id="tasksList">
+        <li data-t="dosa">🫓 Serve a dosa</li>
+        <li data-t="tea">🍵 Serve a chai</li>
+        <li data-t="soda">🥤 Open the soda</li>
+        <li data-t="can">🥫 Open the can</li>
+        <li data-t="fun">🚗💡 Play: door + light</li>
+      </ul>
+      <div class="meter-sub" id="tasksNote">Start with the dosa 👆</div>
+    </div>
+  </aside>
+</main>
+
+<section class="how" id="how">
+  <h2>How a real dosa happens 👨‍🍳</h2>
+  <div class="how-grid">
+    <div class="how-card"><span>1️⃣</span><h3>Spread thin</h3><p>Drag the batter outward in circles — just like the ladle on a hot tawa.</p></div>
+    <div class="how-card"><span>2️⃣</span><h3>Hear the tsss</h3><p>Batter hits hot iron → loud hiss that settles into a crackle. Sound on! 🔊</p></div>
+    <div class="how-card"><span>3️⃣</span><h3>Wait for golden</h3><p>Edges lift, colour turns golden. Flip in the glowing zone.</p></div>
+    <div class="how-card"><span>4️⃣</span><h3>Serve crisp</h3><p>Pull it before it burns. 5 stars = restaurant crisp.</p></div>
+  </div>
+</section>
+
+<section class="sounds" id="sounds">
+  <h2>Real-life tawa sounds 🔊</h2>
+  <p>Every sound is synthesized live in your browser — layered noise like a real kitchen. Tap to preview:</p>
+  <div class="soundboard">
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.place()">🍶 Batter pour + hiss</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.stretch(0.9)">⭕ Spread rub</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.flip()">🥄 Spatula flip</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.perfect()">✨ Crisp ready</button>
+    <button class="btn dark" onclick="AudioSys.ensure();AudioSys.crackle();AudioSys.warn()">🔥 Burning warning</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.sodaPop()">🥤 Soda pop</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.canPop()">🥫 Can pop</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.doorThud()">🚗 Door thud</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.lightClick(true)">💡 Light click</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.pourStart();setTimeout(()=>AudioSys.pourStop(),900)">🫖 Tea pour</button>
+    <button class="btn warm" onclick="AudioSys.ensure();AudioSys.boilStart();setTimeout(()=>{AudioSys.boilStop();AudioSys.boiledDing()},2500)">♨️ Kettle boil</button>
+    <button class="btn dark" onclick="AudioSys.ensure();AudioSys.teaDone()">🍵 Tea ready</button>
+  </div>
+</section>
+
+<div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+  <div class="modal-card">
+    <div class="modal-ribbon" id="resultRibbon">Golden &amp; Crispy!</div>
+    <h2 id="resultTitle">Dosa served!</h2>
+    <div class="big-stars" id="resultStars">★★★★★</div>
+    <p class="result-sub" id="resultSub">Perfectly golden and crisp.</p>
+    <div class="result-grid">
+      <div><span>Final score</span><strong id="resScore">0</strong></div>
+      <div><span>Roast</span><strong id="resDoneness">Perfect</strong></div>
+      <div><span>Tawa time</span><strong id="resTime">0.0s</strong></div>
+      <div><span>Spread quality</span><strong id="resShape">0%</strong></div>
+      <div><span>Flip timing</span><strong id="resFlip">—</strong></div>
+      <div><span>Rating</span><strong id="resRating">Dosa Master</strong></div>
+    </div>
+    <div class="modal-actions">
+      <button id="btnCookAgain" class="btn primary big">↺ Make another dosa</button>
+    </div>
+  </div>
+</div>
+
+<footer class="foot">
+  <span>Dosa Tawa House • HTML5 Canvas + Vanilla JS + Web Audio • No frameworks • 60 FPS • Best with sound on 🔊</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
