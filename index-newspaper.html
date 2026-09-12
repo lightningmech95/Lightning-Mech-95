@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Daily Useless Gazette — Tear Your Own Newspaper</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <!-- Newspaper canvas -->
+  <canvas id="newspaper" aria-label="Newspaper canvas for tearing"></canvas>
+
+  <!-- Overlay UI -->
+  <div class="ui-overlay">
+    <div class="counter" aria-live="polite">Total Sheets Wasted: <span id="wasteCount">0</span></div>
+
+    <div class="controls">
+      <button id="btnReset" aria-label="Print new newspaper">📰 Fetch Another Newspaper</button>
+      <button id="btnMute" aria-label="Mute sound">🔊</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
